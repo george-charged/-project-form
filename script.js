@@ -257,11 +257,12 @@ if (integrationsOtherCheckbox) {
 const projectForm = document.getElementById('projectForm');
 const successMessage = document.getElementById('successMessage');
 
-projectForm.addEventListener('submit', (e) => {
+projectForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
     // Validate at least one design style is selected
     const designStyles = document.querySelectorAll('input[name="designStyle"]:checked');
     if (designStyles.length === 0) {
-        e.preventDefault();
         const designStep = document.querySelector('.form-step[data-step="4"]');
         showError('Please select a design style before submitting.', designStep);
         // Navigate to step 4 to show the error
@@ -270,11 +271,49 @@ projectForm.addEventListener('submit', (e) => {
         return;
     }
 
-    // Clear saved form data on submission
-    localStorage.removeItem('projectFormData');
+    // Show loading state on submit button
+    const submitButton = document.getElementById('submitBtn');
+    const originalButtonText = submitButton.textContent;
+    submitButton.disabled = true;
+    submitButton.textContent = 'Submitting...';
 
-    // Let Formspree handle the submission (don't prevent default)
-    // The form will submit to Formspree and redirect to their success page
+    try {
+        // Submit to Formspree using fetch
+        const formData = new FormData(projectForm);
+        const response = await fetch(projectForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            // Clear saved form data on successful submission
+            localStorage.removeItem('projectFormData');
+
+            // Hide form and show success message
+            projectForm.style.display = 'none';
+            document.querySelector('.progress-container').style.display = 'none';
+            successMessage.style.display = 'block';
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            // Handle error
+            const data = await response.json();
+            const lastStep = document.querySelector('.form-step[data-step="7"]');
+            showError(data.error || 'There was an error submitting your form. Please try again.', lastStep);
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+        }
+    } catch (error) {
+        // Handle network error
+        const lastStep = document.querySelector('.form-step[data-step="7"]');
+        showError('There was a network error. Please check your connection and try again.', lastStep);
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+    }
 });
 
 // Form reset handling
