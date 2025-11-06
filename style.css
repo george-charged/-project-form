@@ -23,7 +23,8 @@
 
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, #dfffc0 0%, #a8d88a 100%);
+    background: url('form-background.png') center center / cover no-repeat;
+    background-attachment: fixed;
     min-height: 100vh;
     padding: 2rem 1rem;
     color: var(--text-dark);
