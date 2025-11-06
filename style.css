@@ -605,6 +605,10 @@ header h1 {
         max-width: 95%;
     }
 
+    .project-form {
+        min-height: auto;
+    }
+
     .progress-steps {
         gap: 0.5rem;
     }
