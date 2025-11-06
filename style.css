@@ -624,51 +624,43 @@ header h1 {
         font-size: 1rem;
     }
 
+    /* Hide progress bar and steps on mobile */
     .progress-container {
-        padding: 1.5rem 1rem 1rem;
+        display: none !important;
     }
 
-    .progress-steps {
-        flex-direction: column;
-        gap: 0.75rem;
-        align-items: stretch;
+    /* Show all form steps at once */
+    .form-step {
+        display: block !important;
+        opacity: 1 !important;
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
     }
 
-    .progress-step {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        text-align: left;
-        padding: 0.75rem;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.05);
-        transition: all 0.3s ease;
-    }
-
-    .progress-step.active {
-        background: rgba(223, 255, 192, 0.1);
-        border-left: 3px solid var(--primary-color);
-    }
-
-    .progress-step.completed {
-        background: rgba(255, 255, 255, 0.08);
-    }
-
-    .step-number {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-        flex-shrink: 0;
-    }
-
-    .step-label {
-        font-size: 0.95rem;
-        white-space: normal;
-        text-align: left;
+    .form-step:last-of-type {
+        border-bottom: none;
     }
 
     .project-form {
         padding: 1.5rem;
+        min-height: auto;
+    }
+
+    /* Hide navigation buttons on mobile */
+    .form-navigation {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn-prev,
+    .btn-next {
+        display: none !important;
+    }
+
+    .btn-submit {
+        display: block !important;
+        width: 100%;
     }
 
     .form-row {
@@ -679,16 +671,6 @@ header h1 {
     .checkbox-group,
     .radio-group {
         grid-template-columns: 1fr;
-    }
-
-    .form-navigation {
-        flex-direction: column;
-    }
-
-    .btn-prev,
-    .btn-next,
-    .btn-submit {
-        width: 100%;
     }
 }
 
@@ -704,33 +686,6 @@ header h1 {
 
     .subtitle {
         font-size: 0.9rem;
-    }
-
-    .progress-container {
-        padding: 1rem 0.5rem 0.75rem;
-    }
-
-    .progress-bar {
-        height: 6px;
-        margin-bottom: 0.75rem;
-    }
-
-    .progress-steps {
-        gap: 0.5rem;
-    }
-
-    .progress-step {
-        padding: 0.6rem;
-    }
-
-    .step-number {
-        width: 36px;
-        height: 36px;
-        font-size: 0.9rem;
-    }
-
-    .step-label {
-        font-size: 0.85rem;
     }
 
     .project-form {
@@ -753,8 +708,6 @@ header h1 {
         padding: 0.65rem;
     }
 
-    .btn-prev,
-    .btn-next,
     .btn-submit {
         padding: 0.85rem 1.5rem;
         font-size: 0.95rem;
