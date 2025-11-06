@@ -49,9 +49,45 @@ function showStep(step) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+function showError(message, stepElement) {
+    // Remove any existing error messages
+    const existingError = stepElement.querySelector('.error-message');
+    if (existingError) {
+        existingError.remove();
+    }
+
+    // Create new error message
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.innerHTML = `<p>${message}</p>`;
+
+    // Insert at the beginning of the step
+    stepElement.insertBefore(errorDiv, stepElement.firstChild);
+
+    // Scroll to error message
+    errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+        errorDiv.style.opacity = '0';
+        errorDiv.style.transform = 'translateY(-10px)';
+        setTimeout(() => errorDiv.remove(), 300);
+    }, 5000);
+}
+
+function clearErrors(stepElement) {
+    const existingError = stepElement.querySelector('.error-message');
+    if (existingError) {
+        existingError.remove();
+    }
+}
+
 function validateStep(step) {
     const currentStepElement = document.querySelector(`.form-step[data-step="${step}"]`);
     const requiredInputs = currentStepElement.querySelectorAll('[required]');
+
+    // Clear any existing errors
+    clearErrors(currentStepElement);
 
     for (let input of requiredInputs) {
         // Skip validation for radio buttons and checkboxes (handled separately)
@@ -61,7 +97,7 @@ function validateStep(step) {
 
         if (!input.value.trim()) {
             input.focus();
-            alert('Please fill in all required fields before proceeding.');
+            showError('Please fill in all required fields before proceeding.', currentStepElement);
             return false;
         }
     }
@@ -70,7 +106,7 @@ function validateStep(step) {
     if (step === 4) {
         const designStyles = currentStepElement.querySelectorAll('input[name="designStyle"]:checked');
         if (designStyles.length === 0) {
-            alert('Please select a design style before proceeding.');
+            showError('Please select a design style before proceeding.', currentStepElement);
             return false;
         }
     }
@@ -226,7 +262,11 @@ projectForm.addEventListener('submit', (e) => {
     const designStyles = document.querySelectorAll('input[name="designStyle"]:checked');
     if (designStyles.length === 0) {
         e.preventDefault();
-        alert('Please select at least one design style.');
+        const designStep = document.querySelector('.form-step[data-step="4"]');
+        showError('Please select a design style before submitting.', designStep);
+        // Navigate to step 4 to show the error
+        currentStep = 4;
+        showStep(currentStep);
         return;
     }
 
