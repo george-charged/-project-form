@@ -598,14 +598,11 @@ header h1 {
 /* Tablet (iPad) - 768px to 1024px */
 @media (max-width: 1024px) and (min-width: 769px) {
     body {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
+        padding: 1rem;
     }
 
     .container {
-        margin-top: 0;
-        margin-bottom: 0;
+        max-width: 95%;
     }
 
     .progress-steps {
