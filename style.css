@@ -612,6 +612,14 @@ header h1 {
     }
 }
 
+/* Mobile Landscape */
+@media (max-width: 768px) and (orientation: landscape) {
+    .logo {
+        width: 200px !important;
+        max-width: 200px !important;
+    }
+}
+
 /* Mobile and Small Tablets - up to 768px */
 @media (max-width: 768px) {
     body {
