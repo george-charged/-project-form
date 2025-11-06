@@ -615,8 +615,8 @@ header h1 {
 /* Mobile Landscape */
 @media (max-width: 768px) and (orientation: landscape) {
     .logo {
-        width: 220px !important;
-        max-width: 220px !important;
+        width: 260px !important;
+        max-width: 260px !important;
     }
 }
 
@@ -633,8 +633,8 @@ header h1 {
     }
 
     .logo {
-        width: 220px !important;
-        max-width: 220px !important;
+        width: 260px !important;
+        max-width: 260px !important;
     }
 
     header {
@@ -732,8 +732,8 @@ header h1 {
     }
 
     .logo {
-        width: 220px !important;
-        max-width: 220px !important;
+        width: 260px !important;
+        max-width: 260px !important;
     }
 
     header {
