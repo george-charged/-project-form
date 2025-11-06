@@ -744,10 +744,11 @@ header h1 {
         margin-bottom: 0.4rem;
     }
 
-    /* Make main section labels bigger on mobile */
+    /* Make main section labels bigger and bold on mobile */
     .form-group > label {
-        font-size: 1.05rem;
-        font-weight: 600;
+        font-size: 1.25rem !important;
+        font-weight: 700 !important;
+        margin-bottom: 0.75rem !important;
     }
 
     .form-group input[type="text"],
