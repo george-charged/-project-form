@@ -54,6 +54,11 @@ function validateStep(step) {
     const requiredInputs = currentStepElement.querySelectorAll('[required]');
 
     for (let input of requiredInputs) {
+        // Skip validation for radio buttons and checkboxes (handled separately)
+        if (input.type === 'radio' || input.type === 'checkbox') {
+            continue;
+        }
+
         if (!input.value.trim()) {
             input.focus();
             alert('Please fill in all required fields before proceeding.');
@@ -61,11 +66,11 @@ function validateStep(step) {
         }
     }
 
-    // Special validation for design style checkboxes
+    // Special validation for design style radio buttons (Step 4)
     if (step === 4) {
         const designStyles = currentStepElement.querySelectorAll('input[name="designStyle"]:checked');
         if (designStyles.length === 0) {
-            alert('Please select at least one design style.');
+            alert('Please select a design style before proceeding.');
             return false;
         }
     }
