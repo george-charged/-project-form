@@ -49,7 +49,8 @@ header {
 }
 
 .logo {
-    width: 280px;
+    width: 280px !important;
+    max-width: 280px !important;
     height: auto;
     margin-bottom: 1.5rem;
     display: block;
