@@ -595,8 +595,8 @@ header h1 {
 
 /* Responsive Design */
 
-/* Tablet (iPad) - 768px to 1024px */
-@media (max-width: 1024px) and (min-width: 769px) {
+/* Tablet (iPad) - Landscape */
+@media (max-width: 1024px) and (min-width: 769px) and (orientation: landscape) {
     body {
         padding: 1rem;
     }
@@ -631,6 +631,47 @@ header h1 {
     .checkbox-group,
     .radio-group {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Tablet (iPad) - Portrait */
+@media (max-width: 1024px) and (min-width: 769px) and (orientation: portrait) {
+    body {
+        padding: 0.5rem;
+    }
+
+    .container {
+        max-width: 90%;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .project-form {
+        min-height: auto;
+    }
+
+    .progress-steps {
+        gap: 0.3rem;
+    }
+
+    .step-number {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+
+    .step-label {
+        font-size: 0.7rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .checkbox-group,
+    .radio-group {
+        grid-template-columns: 1fr;
     }
 }
 
