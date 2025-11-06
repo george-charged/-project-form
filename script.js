@@ -217,81 +217,19 @@ const projectForm = document.getElementById('projectForm');
 const successMessage = document.getElementById('successMessage');
 
 projectForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
     // Validate at least one design style is selected
     const designStyles = document.querySelectorAll('input[name="designStyle"]:checked');
     if (designStyles.length === 0) {
+        e.preventDefault();
         alert('Please select at least one design style.');
         return;
     }
 
-    // Collect form data
-    const formData = new FormData(projectForm);
-    const data = {};
+    // Clear saved form data on submission
+    localStorage.removeItem('projectFormData');
 
-    // Handle regular fields
-    for (let [key, value] of formData.entries()) {
-        if (key === 'designStyle' || key === 'cms' || key === 'integrations') {
-            // Handle multiple checkboxes
-            if (!data[key]) {
-                data[key] = [];
-            }
-            data[key].push(value);
-        } else if (key.startsWith('pages[')) {
-            // Handle page fields
-            if (!data.pages) {
-                data.pages = [];
-            }
-            const match = key.match(/pages\[(\d+)\]\[(\w+)\]/);
-            if (match) {
-                const pageIndex = parseInt(match[1]) - 1;
-                const fieldName = match[2];
-                if (!data.pages[pageIndex]) {
-                    data.pages[pageIndex] = {};
-                }
-                data.pages[pageIndex][fieldName] = value;
-            }
-        } else {
-            data[key] = value;
-        }
-    }
-
-    // Clean up pages array (remove empty slots)
-    if (data.pages) {
-        data.pages = data.pages.filter(page => page && page.name);
-    }
-    
-    // Log the collected data (in a real application, this would be sent to a server)
-    console.log('Form Data:', data);
-    console.log('JSON Data:', JSON.stringify(data, null, 2));
-    
-    // Show success message
-    projectForm.style.display = 'none';
-    successMessage.style.display = 'block';
-    
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    
-    // In a real application, you would send the data to a server here
-    // Example:
-    // fetch('/api/submit-project', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(data),
-    // })
-    // .then(response => response.json())
-    // .then(result => {
-    //     console.log('Success:', result);
-    //     projectForm.style.display = 'none';
-    //     successMessage.style.display = 'block';
-    // })
-    // .catch(error => {
-    //     console.error('Error:', error);
-    //     alert('There was an error submitting your form. Please try again.');
-    // });
+    // Let Formspree handle the submission (don't prevent default)
+    // The form will submit to Formspree and redirect to their success page
 });
 
 // Form reset handling
@@ -453,15 +391,11 @@ projectForm.addEventListener('change', saveFormProgress);
 
 // Load saved data on page load
 window.addEventListener('load', () => {
-    if (confirm('Would you like to restore your previous form data?')) {
+    const savedData = localStorage.getItem('projectFormData');
+    if (savedData && confirm('Would you like to restore your previous form data?')) {
         loadFormProgress();
-    } else {
+    } else if (savedData) {
         localStorage.removeItem('projectFormData');
     }
-});
-
-// Clear saved data on successful submission
-projectForm.addEventListener('submit', () => {
-    localStorage.removeItem('projectFormData');
 });
 
