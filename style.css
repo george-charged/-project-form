@@ -597,6 +597,16 @@ header h1 {
 
 /* Tablet (iPad) - 768px to 1024px */
 @media (max-width: 1024px) and (min-width: 769px) {
+    body {
+        padding: 0;
+        background: var(--form-bg);
+    }
+
+    .container {
+        border-radius: 0;
+        min-height: 100vh;
+    }
+
     .progress-steps {
         gap: 0.5rem;
     }
