@@ -34,9 +34,9 @@ body {
     max-width: 900px;
     margin: 0 auto;
     background: var(--form-bg);
-    border: none;
+    border: none !important;
     border-radius: 16px;
-    box-shadow: var(--shadow-lg);
+    box-shadow: none;
     overflow: hidden;
 }
 
