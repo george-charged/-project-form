@@ -592,6 +592,25 @@ header h1 {
 }
 
 /* Responsive Design */
+
+/* Tablet (iPad) - 768px to 1024px */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .progress-steps {
+        gap: 0.5rem;
+    }
+
+    .step-number {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+
+    .step-label {
+        font-size: 0.8rem;
+    }
+}
+
+/* Mobile and Small Tablets - up to 768px */
 @media (max-width: 768px) {
     body {
         padding: 1rem 0.5rem;
@@ -610,17 +629,21 @@ header h1 {
     }
 
     .progress-steps {
-        gap: 0.25rem;
+        gap: 0.5rem;
+        flex-wrap: nowrap;
     }
 
     .step-number {
-        width: 32px;
-        height: 32px;
-        font-size: 0.875rem;
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
     }
 
     .step-label {
-        font-size: 0.65rem;
+        font-size: 0.75rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .project-form {
@@ -645,6 +668,71 @@ header h1 {
     .btn-next,
     .btn-submit {
         width: 100%;
+    }
+}
+
+/* Small phones - up to 480px */
+@media (max-width: 480px) {
+    body {
+        padding: 0.5rem 0.25rem;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .progress-container {
+        padding: 1rem 0.5rem 0.75rem;
+    }
+
+    .progress-bar {
+        height: 6px;
+        margin-bottom: 0.75rem;
+    }
+
+    .progress-steps {
+        gap: 0.25rem;
+    }
+
+    .step-number {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+
+    .step-label {
+        font-size: 0.6rem;
+    }
+
+    .project-form {
+        padding: 1rem;
+    }
+
+    .form-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    input,
+    select,
+    textarea {
+        font-size: 0.95rem;
+        padding: 0.65rem;
+    }
+
+    .btn-prev,
+    .btn-next,
+    .btn-submit {
+        padding: 0.85rem 1.5rem;
+        font-size: 0.95rem;
     }
 }
 
