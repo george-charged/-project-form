@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Design Project Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>New Project Form</h1>
+            <p class="subtitle">Tell us about your project and we'll bring your vision to life</p>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-steps">
+                <div class="progress-step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Client Info</div>
+                </div>
+                <div class="progress-step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Project Details</div>
+                </div>
+                <div class="progress-step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Pages</div>
+                </div>
+                <div class="progress-step" data-step="4">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Design</div>
+                </div>
+                <div class="progress-step" data-step="5">
+                    <div class="step-number">5</div>
+                    <div class="step-label">Features</div>
+                </div>
+                <div class="progress-step" data-step="6">
+                    <div class="step-number">6</div>
+                    <div class="step-label">Budget</div>
+                </div>
+                <div class="progress-step" data-step="7">
+                    <div class="step-number">7</div>
+                    <div class="step-label">Final Details</div>
+                </div>
+            </div>
+        </div>
+
+        <form id="projectForm" class="project-form">
+            <!-- Step 1: Client Information -->
+            <section class="form-section form-step active" data-step="1">
+                <h2>Client Information</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="clientName">Full Name *</label>
+                        <input type="text" id="clientName" name="clientName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="companyName">Company Name</label>
+                        <input type="text" id="companyName" name="companyName">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="07XXX XXXXXX">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 2: Project Details -->
+            <section class="form-section form-step" data-step="2">
+                <h2>Project Details</h2>
+                <div class="form-group">
+                    <label for="projectName">Project Name *</label>
+                    <input type="text" id="projectName" name="projectName" required>
+                </div>
+                <div class="form-group">
+                    <label for="projectType">Project Type *</label>
+                    <select id="projectType" name="projectType" required>
+                        <option value="design-development" selected>Design & Development</option>
+                        <option value="design-only">Design Only</option>
+                        <option value="development-only">Development Only</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="projectDescription">Project Description *</label>
+                    <textarea id="projectDescription" name="projectDescription" rows="5" required placeholder="Describe your project, goals, and vision..."></textarea>
+                </div>
+            </section>
+
+            <!-- Step 3: Pages -->
+            <section class="form-section form-step" data-step="3">
+                <h2>Pages</h2>
+                <div class="form-group">
+                    <label>Define the pages you need for your website</label>
+                    <div id="pagesContainer">
+                        <!-- Page fields will be added here dynamically -->
+                    </div>
+                    <button type="button" id="addPageBtn" class="btn-add-page">+ Add Page</button>
+                </div>
+            </section>
+
+            <!-- Step 4: Design Preferences -->
+            <section class="form-section form-step" data-step="4">
+                <h2>Design Preferences</h2>
+                <div class="form-group">
+                    <label>Design Style *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="designStyle" value="modern" required>
+                            <span>Modern</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="designStyle" value="minimalist" required>
+                            <span>Minimalist</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="designStyle" value="bold" required>
+                            <span>Bold & Colorful</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="designStyle" value="elegant" required>
+                            <span>Elegant</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="designStyle" value="playful" required>
+                            <span>Playful</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="designStyle" value="corporate" required>
+                            <span>Corporate</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inspirationLinks">Inspiration Links</label>
+                    <textarea id="inspirationLinks" name="inspirationLinks" rows="3" placeholder="Share links to websites you like (one per line)"></textarea>
+                </div>
+            </section>
+
+            <!-- Step 5: Features & Functionality -->
+            <section class="form-section form-step" data-step="5">
+                <h2>Features & Functionality</h2>
+
+                <!-- CMS Options -->
+                <div class="form-group">
+                    <label>CMS (Content Management System)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="cms" value="blog">
+                            <span>Blog</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="cms" value="case-studies">
+                            <span>Case Studies</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="cms" value="podcast">
+                            <span>Podcast</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="cms" value="team-members">
+                            <span>Team Members</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="cms" value="jobs">
+                            <span>Jobs</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="cms" value="services">
+                            <span>Services</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="cms" value="other" id="cmsOtherCheckbox">
+                            <span>Other</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="cmsOtherGroup" style="display: none;">
+                    <label for="cmsOther">Specify Other CMS</label>
+                    <input type="text" id="cmsOther" name="cmsOther" placeholder="Enter CMS name...">
+                </div>
+
+                <!-- Integrations -->
+                <div class="form-group">
+                    <label>Integrations</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="integrations" value="google-analytics">
+                            <span>Google Analytics</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="integrations" value="zapier">
+                            <span>Zapier</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="integrations" value="nodeo">
+                            <span>Nodeo</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="integrations" value="matomo">
+                            <span>Matomo</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="integrations" value="optibase">
+                            <span>Optibase</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="integrations" value="other" id="integrationsOtherCheckbox">
+                            <span>Other</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="integrationsOtherGroup" style="display: none;">
+                    <label for="integrationsOther">Specify Other Integrations</label>
+                    <textarea id="integrationsOther" name="integrationsOther" rows="3" placeholder="Describe the integrations you need..."></textarea>
+                </div>
+            </section>
+
+            <!-- Step 6: Budget & Timeline -->
+            <section class="form-section form-step" data-step="6">
+                <h2>Budget & Timeline</h2>
+                <div class="form-group">
+                    <label for="budget">Budget Range *</label>
+                    <select id="budget" name="budget" required>
+                        <option value="">Select budget range</option>
+                        <option value="under-5k">Under £5,000</option>
+                        <option value="5k-10k">£5,000 - £10,000</option>
+                        <option value="10k-20k">£10,000 - £20,000</option>
+                        <option value="20k-plus">£20,000 +</option>
+                        <option value="not-sure">Not Sure</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="urgency">Project Urgency</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="urgency" value="flexible">
+                            <span>Flexible</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="urgency" value="moderate">
+                            <span>Moderate</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="urgency" value="urgent">
+                            <span>Urgent</span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 7: Additional Information -->
+            <section class="form-section form-step" data-step="7">
+                <h2>Additional Information</h2>
+                <div class="form-group">
+                    <label for="additionalNotes">Additional Notes</label>
+                    <textarea id="additionalNotes" name="additionalNotes" rows="4" placeholder="Any other information you'd like to share..."></textarea>
+                </div>
+            </section>
+
+            <!-- Navigation Buttons -->
+            <div class="form-navigation">
+                <button type="button" class="btn-prev" id="prevBtn">←&nbsp;&nbsp;Previous</button>
+                <button type="button" class="btn-next" id="nextBtn">Next&nbsp;&nbsp;→</button>
+                <button type="submit" class="btn-submit" id="submitBtn" style="display: none;">Submit Project Request</button>
+            </div>
+        </form>
+
+        <div id="successMessage" class="success-message" style="display: none;">
+            <h3>✓ Thank you!</h3>
+            <p>Your project request has been submitted successfully. We'll get back to you soon!</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
