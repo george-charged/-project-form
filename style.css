@@ -23,7 +23,7 @@
 
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background: url('form-background.png') center center / cover no-repeat;
+    background: url('form-background2.png') center center / cover no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
     padding: 2rem 1rem;
@@ -49,7 +49,7 @@ header {
 }
 
 .logo {
-    max-width: 260px;
+    width: 250px;
     height: auto;
     margin-bottom: 1.5rem;
     display: block;
