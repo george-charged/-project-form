@@ -615,15 +615,30 @@ header h1 {
 /* Mobile and Small Tablets - up to 768px */
 @media (max-width: 768px) {
     body {
-        padding: 1rem 0.5rem;
+        padding: 0;
+        background: var(--form-bg);
+    }
+
+    .container {
+        border-radius: 0;
+        min-height: 100vh;
+    }
+
+    .logo {
+        width: 180px !important;
+        max-width: 180px !important;
+    }
+
+    header {
+        padding: 2rem 1.5rem 1rem;
     }
 
     header h1 {
-        font-size: 2rem;
+        font-size: 1.75rem;
     }
 
     .subtitle {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 
     /* Hide progress bar and steps on mobile */
@@ -649,6 +664,30 @@ header h1 {
         min-height: auto;
     }
 
+    .form-section h2 {
+        font-size: 1.35rem;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group input[type="date"],
+    .form-group select {
+        height: 38px;
+        padding: 0 0.75rem;
+        font-size: 0.95rem;
+    }
+
+    .form-group textarea {
+        padding: 0.6rem 0.75rem;
+        font-size: 0.95rem;
+    }
+
     /* Hide navigation buttons on mobile */
     .form-navigation {
         display: flex;
@@ -663,6 +702,8 @@ header h1 {
     .btn-submit {
         display: block !important;
         width: 100%;
+        height: 44px;
+        font-size: 1rem;
     }
 
     .form-row {
@@ -679,7 +720,16 @@ header h1 {
 /* Small phones - up to 480px */
 @media (max-width: 480px) {
     body {
-        padding: 0.5rem 0.25rem;
+        padding: 0;
+    }
+
+    .logo {
+        width: 160px !important;
+        max-width: 160px !important;
+    }
+
+    header {
+        padding: 1.5rem 1rem 0.75rem;
     }
 
     header h1 {
@@ -687,7 +737,7 @@ header h1 {
     }
 
     .subtitle {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 
     .project-form {
@@ -695,23 +745,32 @@ header h1 {
     }
 
     .form-section h2 {
-        font-size: 1.5rem;
-        margin-bottom: 1.25rem;
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
     }
 
     .form-group label {
+        font-size: 0.85rem;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group input[type="date"],
+    .form-group select {
+        height: 36px;
+        padding: 0 0.65rem;
         font-size: 0.9rem;
     }
 
-    input,
-    select,
-    textarea {
-        font-size: 0.95rem;
-        padding: 0.65rem;
+    .form-group textarea {
+        padding: 0.5rem 0.65rem;
+        font-size: 0.9rem;
     }
 
     .btn-submit {
-        padding: 0.85rem 1.5rem;
+        height: 42px;
+        padding: 0 1.5rem;
         font-size: 0.95rem;
     }
 }
