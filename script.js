@@ -312,6 +312,17 @@ projectForm.addEventListener('submit', async (e) => {
         return;
     }
 
+    // Validate at least one required technology is selected
+    const technologyCheckboxes = document.querySelectorAll('input[name="requiredTechnology"]:checked');
+    if (technologyCheckboxes.length === 0) {
+        const technologyStep = document.querySelector('.form-step[data-step="5"]');
+        showError('Please select a required technology before submitting.', technologyStep);
+        // Navigate to step 5 to show the error
+        currentStep = 5;
+        showStep(currentStep);
+        return;
+    }
+
     // Validate reCAPTCHA
     const recaptchaResponse = grecaptcha.getResponse();
     const recaptchaError = document.getElementById('recaptcha-error');
