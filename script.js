@@ -545,13 +545,29 @@ setInterval(saveFormProgress, 30000);
 // Save on input change
 projectForm.addEventListener('change', saveFormProgress);
 
+// Force scroll to top on page load
+if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+}
+
+// Scroll to top immediately
+window.scrollTo(0, 0);
+
 // Load saved data on page load
 window.addEventListener('load', () => {
+    // Ensure we're at the top of the page
+    window.scrollTo(0, 0);
+
     const savedData = localStorage.getItem('projectFormData');
     if (savedData && confirm('Would you like to restore your previous form data?')) {
         loadFormProgress();
     } else if (savedData) {
         localStorage.removeItem('projectFormData');
     }
+});
+
+// Also scroll to top when page becomes visible (for mobile browser back button)
+document.addEventListener('DOMContentLoaded', () => {
+    window.scrollTo(0, 0);
 });
 
