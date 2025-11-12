@@ -111,6 +111,15 @@ function validateStep(step) {
         }
     }
 
+    // Special validation for required technology checkboxes (Step 5)
+    if (step === 5) {
+        const technologyCheckboxes = currentStepElement.querySelectorAll('input[name="requiredTechnology"]:checked');
+        if (technologyCheckboxes.length === 0) {
+            showError('Please select a required technology before proceeding.', currentStepElement);
+            return false;
+        }
+    }
+
     return true;
 }
 
