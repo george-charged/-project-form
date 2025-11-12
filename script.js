@@ -550,13 +550,24 @@ if (history.scrollRestoration) {
     history.scrollRestoration = 'manual';
 }
 
-// Scroll to top immediately
+// Scroll to top immediately and repeatedly to override any browser behavior
 window.scrollTo(0, 0);
+document.documentElement.scrollTop = 0;
+document.body.scrollTop = 0;
+
+// Also scroll to top when page becomes visible (for mobile browser back button)
+document.addEventListener('DOMContentLoaded', () => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+});
 
 // Load saved data on page load
 window.addEventListener('load', () => {
-    // Ensure we're at the top of the page
+    // Scroll to top before showing dialog
     window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
 
     const savedData = localStorage.getItem('projectFormData');
     if (savedData && confirm('Would you like to restore your previous form data?')) {
@@ -564,10 +575,17 @@ window.addEventListener('load', () => {
     } else if (savedData) {
         localStorage.removeItem('projectFormData');
     }
-});
 
-// Also scroll to top when page becomes visible (for mobile browser back button)
-document.addEventListener('DOMContentLoaded', () => {
+    // Ensure we're at the top of the page after handling the dialog
     window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
+    // Additional safeguard with slight delay
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+    }, 100);
 });
 
