@@ -115,7 +115,7 @@ function validateStep(step) {
     if (step === 5) {
         const technologyCheckboxes = currentStepElement.querySelectorAll('input[name="requiredTechnology"]:checked');
         if (technologyCheckboxes.length === 0) {
-            showError('Please select a required technology before proceeding.', currentStepElement);
+            showError('Please fill in all required fields before proceeding.', currentStepElement);
             return false;
         }
     }
@@ -316,7 +316,7 @@ projectForm.addEventListener('submit', async (e) => {
     const technologyCheckboxes = document.querySelectorAll('input[name="requiredTechnology"]:checked');
     if (technologyCheckboxes.length === 0) {
         const technologyStep = document.querySelector('.form-step[data-step="5"]');
-        showError('Please select a required technology before submitting.', technologyStep);
+        showError('Please fill in all required fields before proceeding.', technologyStep);
         // Navigate to step 5 to show the error
         currentStep = 5;
         showStep(currentStep);
