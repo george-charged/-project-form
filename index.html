@@ -6,6 +6,7 @@
     <title>Project Form</title>
     <link rel="icon" type="image/png" href="Favicon3.png">
     <link rel="stylesheet" href="style.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <div class="container">
@@ -297,6 +298,13 @@
                 <div class="form-group">
                     <label for="additionalNotes">Additional Notes</label>
                     <textarea id="additionalNotes" name="additionalNotes" rows="4" placeholder="Any other information you'd like to share..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Verify you're human *</label>
+                    <div class="g-recaptcha" data-sitekey="6Lel9UgrAAAAACWg0tdnrauSyVEUi7f_LQcFLRTt"></div>
+                    <div id="recaptcha-error" style="color: #e74c3c; font-size: 0.875rem; margin-top: 0.5rem; display: none;">
+                        Please complete the reCAPTCHA verification.
+                    </div>
                 </div>
             </section>
 

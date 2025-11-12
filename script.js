@@ -303,6 +303,19 @@ projectForm.addEventListener('submit', async (e) => {
         return;
     }
 
+    // Validate reCAPTCHA
+    const recaptchaResponse = grecaptcha.getResponse();
+    const recaptchaError = document.getElementById('recaptcha-error');
+
+    if (!recaptchaResponse) {
+        recaptchaError.style.display = 'block';
+        const lastStep = document.querySelector('.form-step[data-step="7"]');
+        showError('Please complete the reCAPTCHA verification before submitting.', lastStep);
+        return;
+    } else {
+        recaptchaError.style.display = 'none';
+    }
+
     // Show loading state on submit button
     const submitButton = document.getElementById('submitBtn');
     const originalButtonText = submitButton.textContent;
@@ -312,6 +325,9 @@ projectForm.addEventListener('submit', async (e) => {
     try {
         // Submit to Formspree using fetch
         const formData = new FormData(projectForm);
+        // Add reCAPTCHA response to form data
+        formData.append('g-recaptcha-response', recaptchaResponse);
+
         const response = await fetch(projectForm.action, {
             method: 'POST',
             body: formData,
@@ -338,6 +354,8 @@ projectForm.addEventListener('submit', async (e) => {
             showError(data.error || 'There was an error submitting your form. Please try again.', lastStep);
             submitButton.disabled = false;
             submitButton.textContent = originalButtonText;
+            // Reset reCAPTCHA
+            grecaptcha.reset();
         }
     } catch (error) {
         // Handle network error
@@ -345,6 +363,8 @@ projectForm.addEventListener('submit', async (e) => {
         showError('There was a network error. Please check your connection and try again.', lastStep);
         submitButton.disabled = false;
         submitButton.textContent = originalButtonText;
+        // Reset reCAPTCHA
+        grecaptcha.reset();
     }
 });
 
