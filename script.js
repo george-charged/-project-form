@@ -340,7 +340,8 @@ projectForm.addEventListener('submit', async (e) => {
     const submitButton = document.getElementById('submitBtn');
     const originalButtonText = submitButton.textContent;
     submitButton.disabled = true;
-    submitButton.textContent = 'Submitting...';
+    submitButton.innerHTML = '<span style="display: inline-block; animation: spin 1s linear infinite; margin-right: 8px;">⏳</span> Submitting...';
+    submitButton.style.opacity = '0.7';
 
     try {
         // Submit to Formspree using fetch
@@ -373,7 +374,8 @@ projectForm.addEventListener('submit', async (e) => {
             const lastStep = document.querySelector('.form-step[data-step="7"]');
             showError(data.error || 'There was an error submitting your form. Please try again.', lastStep);
             submitButton.disabled = false;
-            submitButton.textContent = originalButtonText;
+            submitButton.innerHTML = originalButtonText;
+            submitButton.style.opacity = '1';
             // Reset reCAPTCHA
             grecaptcha.reset();
         }
@@ -382,7 +384,8 @@ projectForm.addEventListener('submit', async (e) => {
         const lastStep = document.querySelector('.form-step[data-step="7"]');
         showError('There was a network error. Please check your connection and try again.', lastStep);
         submitButton.disabled = false;
-        submitButton.textContent = originalButtonText;
+        submitButton.innerHTML = originalButtonText;
+        submitButton.style.opacity = '1';
         // Reset reCAPTCHA
         grecaptcha.reset();
     }
