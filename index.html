@@ -153,6 +153,34 @@
             <section class="form-section form-step" data-step="5">
                 <h2>Features & Functionality</h2>
 
+                <!-- Required Technology -->
+                <div class="form-group">
+                    <label>Required Technology *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="requiredTechnology" value="webflow" class="technology-checkbox">
+                            <span>Webflow</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="requiredTechnology" value="framer" class="technology-checkbox">
+                            <span>Framer</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="requiredTechnology" value="custom-build" class="technology-checkbox">
+                            <span>Custom Build</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="requiredTechnology" value="other" class="technology-checkbox" id="technologyOtherCheckbox">
+                            <span>Other</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="technologyOtherGroup" style="display: none;">
+                    <label for="technologyOther">Specify Other Technology</label>
+                    <input type="text" id="technologyOther" name="technologyOther" placeholder="Enter technology name...">
+                </div>
+
                 <!-- CMS Options -->
                 <div class="form-group">
                     <label>CMS (Content Management System)</label>
@@ -216,6 +244,10 @@
                         <label class="checkbox-label">
                             <input type="checkbox" name="integrations" value="optibase">
                             <span>Optibase</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="integrations" value="smootify">
+                            <span>Smootify</span>
                         </label>
                         <label class="checkbox-label">
                             <input type="checkbox" name="integrations" value="other" id="integrationsOtherCheckbox">

@@ -225,6 +225,38 @@ addPageBtn.addEventListener('click', createPageField);
 // Add initial page field
 createPageField();
 
+// Required Technology - single selection logic
+const technologyCheckboxes = document.querySelectorAll('.technology-checkbox');
+const technologyOtherCheckbox = document.getElementById('technologyOtherCheckbox');
+const technologyOtherGroup = document.getElementById('technologyOtherGroup');
+
+technologyCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', (e) => {
+        if (e.target.checked) {
+            // Uncheck all other technology checkboxes
+            technologyCheckboxes.forEach(cb => {
+                if (cb !== e.target) {
+                    cb.checked = false;
+                }
+            });
+
+            // Show/hide "Other" field
+            if (e.target === technologyOtherCheckbox) {
+                technologyOtherGroup.style.display = 'block';
+            } else {
+                technologyOtherGroup.style.display = 'none';
+                document.getElementById('technologyOther').value = '';
+            }
+        } else {
+            // If unchecking, hide "Other" field
+            if (e.target === technologyOtherCheckbox) {
+                technologyOtherGroup.style.display = 'none';
+                document.getElementById('technologyOther').value = '';
+            }
+        }
+    });
+});
+
 // CMS and Integrations "Other" field toggle
 const cmsOtherCheckbox = document.getElementById('cmsOtherCheckbox');
 const cmsOtherGroup = document.getElementById('cmsOtherGroup');
