@@ -340,8 +340,8 @@ projectForm.addEventListener('submit', async (e) => {
     const submitButton = document.getElementById('submitBtn');
     const originalButtonText = submitButton.textContent;
     submitButton.disabled = true;
-    submitButton.innerHTML = '<span style="display: inline-block; animation: spin 1s linear infinite; margin-right: 8px;">⏳</span> Submitting...';
-    submitButton.style.opacity = '0.7';
+    submitButton.innerHTML = '<span class="spinner"></span>Submitting...';
+    submitButton.style.opacity = '0.8';
 
     try {
         // Submit to Formspree using fetch
