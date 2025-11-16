@@ -385,7 +385,7 @@ header h1 {
 }
 
 .page-field {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.03);
     border: none;
     border-radius: 8px;
     padding: 1.5rem;
