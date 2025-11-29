@@ -8,6 +8,27 @@ const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const submitBtn = document.getElementById('submitBtn');
 
+// Logo upload custom button
+const logoUploadInput = document.getElementById('logoUpload');
+const logoUploadButton = document.getElementById('logoUploadButton');
+const logoUploadFilename = document.getElementById('logoUploadFilename');
+
+if (logoUploadInput && logoUploadButton) {
+    logoUploadButton.addEventListener('click', () => {
+        logoUploadInput.click();
+    });
+
+    logoUploadInput.addEventListener('change', () => {
+        if (logoUploadFilename) {
+            if (logoUploadInput.files && logoUploadInput.files.length > 0) {
+                logoUploadFilename.textContent = logoUploadInput.files[0].name;
+            } else {
+                logoUploadFilename.textContent = 'No file chosen';
+            }
+        }
+    });
+}
+
 function showStep(step) {
     // Hide all steps
     formSteps.forEach(s => s.classList.remove('active'));
@@ -503,16 +524,20 @@ const saveFormProgress = () => {
     const formData = new FormData(projectForm);
     const data = {};
     
-    for (let [key, value] of formData.entries()) {
-        if (key === 'designStyle' || key === 'features') {
-            if (!data[key]) {
-                data[key] = [];
-            }
-            data[key].push(value);
-        } else {
-            data[key] = value;
-        }
-    }
+	for (let [key, value] of formData.entries()) {
+	    // Skip file inputs when saving to localStorage
+	    if (value instanceof File) {
+	        continue;
+	    }
+	    if (key === 'designStyle' || key === 'features') {
+	        if (!data[key]) {
+	            data[key] = [];
+	        }
+	        data[key].push(value);
+	    } else {
+	        data[key] = value;
+	    }
+	}
     
     localStorage.setItem('projectFormData', JSON.stringify(data));
 };

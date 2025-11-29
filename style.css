@@ -251,6 +251,115 @@ header h1 {
     color: #1c1b1b;
 }
 
+/* File upload input styled to match buttons */
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--white);
+    border-radius: 8px;
+    background: var(--white);
+    color: #1c1b1b;
+    font-size: 0.95rem;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.form-group input[type="file"]::file-selector-button {
+    margin-right: 1rem;
+    border: 1px solid var(--white);
+    border-radius: 40px;
+    padding: 0 1.5rem;
+    height: 40px;
+    background: transparent;
+    color: var(--white);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group input[type="file"]::file-selector-button:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #1c1b1b;
+}
+
+/* Safari / older WebKit */
+.form-group input[type="file"]::-webkit-file-upload-button {
+    margin-right: 1rem;
+    border: 1px solid var(--white);
+    border-radius: 40px;
+    padding: 0 1.5rem;
+    height: 40px;
+    background: transparent;
+    color: var(--white);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group input[type="file"]::-webkit-file-upload-button:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #1c1b1b;
+}
+
+.file-input-hidden {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+.btn-upload {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 1.75rem;
+    height: 44px;
+    border-radius: 999px;
+    border: none;
+    background: var(--bg-light);
+    color: var(--white);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.btn-upload:hover {
+    background: #000000;
+    transform: translateY(-1px);
+    box-shadow: 0 14px 24px rgba(0, 0, 0, 0.45);
+}
+
+.btn-upload:active {
+    transform: translateY(0);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+}
+
+.btn-upload-icon {
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    width: 1.25rem;
+	    height: 1.25rem;
+	    font-size: 0;
+	}
+
+.btn-upload-icon::before {
+	    content: "⇧";
+	    font-size: 1.1rem;
+	    line-height: 1;
+	}
+
+.file-upload-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {

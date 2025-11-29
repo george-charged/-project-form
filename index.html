@@ -144,10 +144,25 @@
                         </label>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="inspirationLinks">Inspiration Links</label>
-                    <textarea id="inspirationLinks" name="inspirationLinks" rows="3" placeholder="Share links to websites you like (one per line)"></textarea>
-                </div>
+	                <div class="form-group">
+	                    <label for="inspirationLinks">Inspiration Links</label>
+	                    <textarea id="inspirationLinks" name="inspirationLinks" rows="3" placeholder="Share links to websites you like (one per line)"></textarea>
+	                </div>
+	                <div class="form-group">
+	                    <label for="logoUpload">Upload Logo</label>
+		                <input type="file" id="logoUpload" name="logoUpload" accept="image/*" class="file-input-hidden">
+		                <button type="button" class="btn-upload" id="logoUploadButton">
+		                    <span class="btn-upload-icon" aria-hidden="true">
+		                        815
+		                    </span>
+		                    <span class="btn-upload-text">Upload logo</span>
+		                </button>
+		                <p class="file-upload-caption" id="logoUploadFilename">No file chosen</p>
+	                </div>
+	                <div class="form-group">
+	                    <label for="brandColours">Brand Colours</label>
+	                    <textarea id="brandColours" name="brandColours" rows="3" placeholder="Add brand colour hex codes, one per line (e.g. #FF5733, #1A1A1A, #FFFFFF)"></textarea>
+	                </div>
             </section>
 
             <!-- Step 5: Features & Functionality -->
