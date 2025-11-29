@@ -8,27 +8,6 @@ const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const submitBtn = document.getElementById('submitBtn');
 
-// Logo upload custom button
-const logoUploadInput = document.getElementById('logoUpload');
-const logoUploadButton = document.getElementById('logoUploadButton');
-const logoUploadFilename = document.getElementById('logoUploadFilename');
-
-if (logoUploadInput && logoUploadButton) {
-    logoUploadButton.addEventListener('click', () => {
-        logoUploadInput.click();
-    });
-
-    logoUploadInput.addEventListener('change', () => {
-        if (logoUploadFilename) {
-            if (logoUploadInput.files && logoUploadInput.files.length > 0) {
-                logoUploadFilename.textContent = logoUploadInput.files[0].name;
-            } else {
-                logoUploadFilename.textContent = 'No file chosen';
-            }
-        }
-    });
-}
-
 function showStep(step) {
     // Hide all steps
     formSteps.forEach(s => s.classList.remove('active'));
